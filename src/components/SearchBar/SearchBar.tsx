@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import { GoSearch } from "react-icons/go";
-import toast, { Toaster } from "react-hot-toast";
+import { FormEvent, useState } from "react";
 import css from "./SearchBar.module.css";
 
+import toast, { Toaster } from "react-hot-toast";
+
 interface SearchBarProps {
-  onSubmit: (query: string) => void;
+  takeQuery: (query: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
-  const [query, setQuery] = useState<string>("");
-
-  const saveInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    setQuery(inputValue);
-  };
+const SearchBar = ({ takeQuery }: SearchBarProps) => {
+  const [search, setSearch] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    onSubmit(query);
-
-    if (query.trim() === "") {
-      toast.error("Please enter a search query.");
+    if (search.trim().length < 3) {
+      toast.error("Please enter at least 3 characters to search!");
       return;
     }
-
-    setQuery("");
+    takeQuery(search);
+    setSearch("");
   };
 
   return (
     <header className={css.header}>
       <form className={css.form} onSubmit={handleSubmit}>
-        <input className={css.input} type="text" value={query} onChange={saveInputValue} placeholder="Search images and photos" />
+        <input
+          className={css.searchInput}
+          type="text"
+          autoComplete="off"
+          onChange={(e) => setSearch(e.target.value)}
+          autoFocus
+          placeholder="Search images and photos"
+          name="query"
+        />
         <button className={css.btn} type="submit">
-          <GoSearch size={20} />
+          Search
         </button>
       </form>
       <Toaster position="top-right" reverseOrder={false} />

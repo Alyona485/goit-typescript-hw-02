@@ -1,44 +1,48 @@
-import React from "react";
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
+import { FC, MouseEvent } from "react";
 
 interface ImageModalProps {
-  images: { urls: { regular: string; alt_description: string } };
   isOpen: boolean;
-  onRequestClose: () => void;
+  onClose: (e: MouseEvent<HTMLButtonElement>) => void;
+  currentImg: string;
+  currentAlt: string;
 }
 
-const customStyles: Modal.Styles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "transparent",
-    border: "none",
-  },
-};
-
-Modal.setAppElement("#root");
-
-const ImageModal: React.FC<ImageModalProps> = ({ images, isOpen, onRequestClose }) => {
-  if (!images) {
-    return null;
-  }
-
+const ImageModal: FC<ImageModalProps> = ({
+  isOpen,
+  onClose,
+  currentImg,
+  currentAlt,
+}) => {
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      transform: "translate(-50%, -50%)",
+      padding: "0",
+      margin: "0",
+      width: "80%",
+      height: "auto",
+      maxHeight: "90vh",
+      overflow: "hidden",
+      borderRadius: "0",
+      border: "none",
+    },
+  };
   return (
-    <Modal
-      style={customStyles}
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      className={css.imageModal}
-      overlayClassName={css.overlay}
-      contentLabel="Image Modal"
-    >
-      <img src={images.urls.regular} alt={images.urls.alt_description} />
-    </Modal>
+    <div className={css.modalOverlay}>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={onClose}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <img className={css.modalImg} src={currentImg} alt={currentAlt}></img>
+      </Modal>
+    </div>
   );
 };
 

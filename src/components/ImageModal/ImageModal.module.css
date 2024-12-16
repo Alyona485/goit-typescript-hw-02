@@ -1,5 +1,10 @@
-.overlay {
-    inset: 0;
-    position: fixed;
-    background-color: rgba(129, 129, 129, 0.455);
+.modalOverlay {
+  background-color: rgba(46, 47, 66, 0.4);
+}
+
+.modalImg {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
 }

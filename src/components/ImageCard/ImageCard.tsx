@@ -1,20 +1,14 @@
-import React from "react";
 import css from "./ImageCard.module.css";
 
-type ImageCardProps = {
-  image: {
-    urls: {
-      small: string;
-      alt_description: string;
-    };
-  };
-  onClick: () => void;
-};
+interface ImgCardProps {
+  img: string;
+  alt: string;
+}
 
-const ImageCard: React.FC<ImageCardProps> = ({ image, onClick }) => {
+const ImageCard = ({ img, alt }: ImgCardProps) => {
   return (
-    <div className={css.container}>
-      <img src={image.urls.small} alt={image.urls.alt_description} className={css.image} onClick={onClick} width="320" height="200" />
+    <div>
+      <img className={css.galleryImg} src={img} alt={alt} />
     </div>
   );
 };
