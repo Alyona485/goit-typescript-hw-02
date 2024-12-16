@@ -1,5 +1,8 @@
-.gallery_list {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
+.imageGallery {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
 }

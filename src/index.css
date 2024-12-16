@@ -1,28 +1,22 @@
-body {
-  font-family: sans-serif;
+ :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  margin: 0 auto;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+/*
+
+body {
   margin: 0;
-  padding: 0;
-}
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+} 
 
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
+*/

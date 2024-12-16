@@ -1,9 +1,6 @@
 .loader {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.loader svg {
-  stroke: rgb(44, 44, 156);
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
 }
